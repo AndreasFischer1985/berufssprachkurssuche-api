@@ -1,0 +1,615 @@
+﻿openapi: "3.0.0"
+info:
+  title: "Arbeitsagentur Berufssprachkurssuche API"
+  description: |
+   Eine der größten Berufssprachförderungsdatenbanken Deutschlands durchsuchen. 
+   
+   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
+   
+   **ClientID:** bd24f42e-ad0b-4005-b834-23bb6800dc6c
+   
+   **ClientSecret:** 6776b89e-5728-4643-8cd5-c93aefb5314b 
+   
+   **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
+  version: "1.0.0"
+  contact:
+    name:  "AndreasFischer1985"
+    email: "andreasfischer1985@web.de"
+    url: "https://github.com/AndreasFischer1985/berufssprachkurssuche-api"
+
+servers:
+  - url: "https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung"
+
+paths:
+  /pc/v1/bildungsangebot:
+    get:
+      summary: Berufssprachkurssuche
+      description: "Die Berufssprachkurssuche ermöglicht verfügbare Berufssprachkursangebote mit verschiedenen GET-Parametern zu filtern."
+      operationId: berufssprachkurssuche
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Response'
+      parameters:
+        - in: query
+          name: suchworte
+          schema:
+            type: string
+          description: "Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich." 
+          example: "Deutschsprachf%25C3%25B6rderung"
+          required: false
+
+        - in: query
+          name: orte
+          schema:
+            type: string
+          description: "Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich."
+          example: "Feucht_90537_11.224918_49.376701"
+          required: false
+
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Seite (beginnend mit 0 für die erste Seite).
+          example: 1
+          required: false
+
+        - in: query
+          name: umkreis
+          schema:
+            type: string
+            enum:
+                - Bundesweit
+                - 25
+                - 50
+                - 100
+                - 150
+                - 200
+          description: Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
+          example: "Bundesweit"
+          required: false
+
+        - in: query
+          name: sprachniveau
+          schema:
+            type: string
+            enum:
+                - MC%2001%201
+                - MC%2001%202
+                - MC%2001%203
+                - MC%2001%204
+                - MC%2001%205               
+          description: "Sprachzielniveau - MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2. Mehrere Komma-getrennte Angaben möglich."
+          example: "MC%2001%201"
+          required: false
+
+        - in: query
+          name: berufsfachsprachkurse
+          schema:
+            type: string
+            enum:
+                - MC%2002
+                - MC%2003
+          example: MC%2003
+          description: "Berufsfachsprachkurse - MC%2002=Spezialberufskurs, MC%2003=Berufsanerkennung. Mehrere Komma-getrennte Angaben möglich."
+          required: false
+
+        - in: query
+          name: beginntermine
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+          example: 1
+          required: false
+          description: "Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=nächster Monat, 3=übernächster Monat, 4=überübernächster Monat, 5=spätere Termine, 6=frühere Termine. Mehrere Komma-getrennte Angaben möglich."
+
+        - in: query
+          name: unterrichtsformen
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 6
+              - 3
+              - 5
+              - 0
+          description: "Lernform - 1=Vollzeit, 2=Teilzeit, 6=Blockunterricht, 3=Wochenendveranstaltung, 5=E-Learning, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich."
+          example: 0
+          required: false
+
+        - in: query
+          name: anbieter
+          schema:
+            type: integer
+          description: Anbieter-ID - numerische ID (z.B. 16574). Mehrere Komma-getrennte Angaben möglich. Bei größeren Treffermengen ist für die Verwendung des Filters nach Anbietern eine Einschränkung auf Ort, Suchbegriff oder Umkreis erforderlich. 
+          example: 16574
+          required: false
+
+        
+security: 
+  - clientCredAuth: 
+    - "read"
+   
+components: 
+  securitySchemes:
+    clientCredAuth:    # <---- arbitrary name
+      type: oauth2
+      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Client Credentials sind folgende:<br><br> **ClientID:** bd24f42e-ad0b-4005-b834-23bb6800dc6c <br> **ClientSecret:** 6776b89e-5728-4643-8cd5-c93aefb5314b"
+      flows:
+        clientCredentials:  
+          tokenUrl: https://rest.arbeitsagentur.de/oauth/gettoken_cc
+          scopes: {}
+  schemas:    
+    Response:
+      type: object
+      properties:
+        _embedded: 
+          type: object
+          properties: 
+            termine: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                    example: 134023869                
+                  unterrichtsform: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 1
+                      bezeichnung: 
+                        type: string
+                        example: "Vor-Ort-Vollzeit"
+                  foerderung: 
+                    type: boolean
+                    example: false
+                  kostenWert: 
+                     type: string
+                  kostenWaehrung: 
+                     type: string
+                     example: EUR
+                  beginn: 
+                     type: integer 
+                     example: 1649109600000
+                  ende: 
+                     type: integer
+                     example: 1665007200000
+                  dauer:
+                    type: object
+                    properties:
+                      id: 
+                        type: integer
+                        example: 5
+                      bezeichnung: 
+                        type: string
+                        example: mehr als 3 Monate bis 6 Monate
+                  kostenBemerkung: 
+                    type: string              
+                  teilnehmerMin: 
+                    type: integer
+                    example: 3
+                  teilnehmerMax: 
+                    type: integer
+                    example: 6
+                  aktualisierungsdatum: 
+                    type: string
+                    example: '1647990000000'
+                  bemerkung: 
+                    type: string
+                  link: 
+                    type: string
+                    example: https://maskzentrum.de/deutsch-als-fremdsprache/b2---pflege/
+                  individuellerEinstieg: 
+                    type: boolean
+                    example: false
+                  anmeldeschluss: 
+                    type: string
+                    example: '1649109600000'
+                  unterrichtszeiten: 
+                    type: string
+                    example: "<p>Montag - Freitag<br/>08:30 - 12:35 Uhr<br/>5 UE/Tag<br/>25 UE/Woche<br/>600 UE</p>"
+                  bemerkungZeit: 
+                    type: string
+                    example: '<p>Präsenzunterricht </p><p>Anmeldung: <br/>Bitte vereinbaren Sie telefonisch einen Termin.</p>'
+                  eigeneAngebotsnummer: 
+                    type: string
+                  pruefendeStelle:
+                    type: string
+                  angebot:
+                    type: object
+                    properties:
+                      id: 
+                        type: integer
+                        example: 8004554
+                      titel: 
+                        type: string
+                        example: "Berufsbezogene Deutschsprachförderung DeuFöV - B2 - nichtakademische Gesundheitsberufe (Gesundheits-, Kranken-, Altenpfleger)"
+                      inhalt: 
+                        type: string                         
+                      abschlussart: 
+                        type: string    
+                      abschlussbezeichnung: 
+                        type: string    
+                        example: '- B2 Pflege'
+                      foerderung: 
+                        type: string    
+                        example: 'Jobcenter, Agentur für Arbeit, BAMF Die Kurse werden aus Mitteln des Bundeshaushalts finanziert. Eine Teilnahme ist kostenfrei. Ausnahme: Beschäftigte müssen einen Kostenbeitrag i.H.v. 50% des Kostenerstattungssatzes leisten.'
+                      zugang: 
+                        type: string 
+                      anrechnung:
+                        type: string 
+                      berechtigungen:
+                        type: string 
+                      zusatzqualifikationen: 
+                        type: string
+                      link: 
+                        type: string 
+                      zielgruppe: 
+                        type: string 
+
+                      bildungsanbieter:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                            example: 192753
+                          name: 
+                            type: string
+                            example: MASK Zentrum (AkadRe GmbH)
+                          telefonVorwahl: 
+                            type: string
+                            example: '0911'
+                          telefonDurchwahl: 
+                            type: string
+                          mobilVorwahl: 
+                            type: string
+                          mobilDurchwahl: 
+                            type: string
+                          faxVorwahl: 
+                            type: string
+                          faxDurchwahl: 
+                            type: string
+                          homepage: 
+                            type: string
+                          email: 
+                            type: string
+                          adresse:
+                            type: object
+                            properties: 
+                              id:
+                                type: integer
+                                example: 2676464
+                              bezeichnung:
+                                type: string 
+                              strasse: 
+                                type: string 
+                              hinweise:
+                                type: string 
+                              dienstleistungen:
+                                type: string 
+                              ortStrasse:
+                                type: object
+                                properties:
+                                  id: 
+                                    type: integer
+                                    example: 38287
+                                  plz: 
+                                    type: string
+                                    example: '90439'
+                                  name: 
+                                    type: string
+                                    example: "Nürnberg, Mittelfranken"
+                                  land:
+                                    type: object
+                                    properties: 
+                                      id: 
+                                        type: integer
+                                        example: 2
+                                      name: 
+                                        type: string
+                                        example: Bayern
+                                      laenderCode: 
+                                        type: string 
+                                        example: D
+                                      bundeslandCode: 
+                                        type: string
+                                        example: BAY
+                                      code: 
+                                        type: string
+                                        example: BAY
+                              koordinaten:
+                                type: object
+                                properties: 
+                                  lat: 
+                                    type: number
+                                    example: 19.440563
+                                  lon: 
+                                    type: number
+                                    example: 41.038883
+                          logo: 
+                            type: string
+                      bildungsart:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                            example: 110
+                          bezeichnung: 
+                            type: string
+                            example: Berufssprachkurse
+                      systematiken:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            id: 
+                              type: integer
+                              example: 130174
+                            codeNr: 
+                              type: string
+                              example: MC 03
+                            kurzbezeichnung: 
+                              type: string
+                      schulart:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                            example: 105
+                          bezeichnung: 
+                            type: string
+                            example: 'Einrichtung der beruflichen Weiterbildung'
+                      behinderungen:
+                        type: array
+                        items: 
+                          type: object
+                      zertifizierer:
+                        type: array
+                        items: 
+                          type: object
+                      traeger: 
+                        type: string
+                      suchworte:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            suchwort: 
+                              type: string
+                              example: Deutschsprachförderung                     
+                  veranstaltungsablaeufe:
+                     type: array
+                     items:
+                       type: object
+                  adresse:
+                    type: object
+                    properties: 
+                      id:
+                        type: integer
+                        example: 2676464
+                      bezeichnung:
+                        type: string 
+                      strasse: 
+                        type: string 
+                      hinweise:
+                        type: string 
+                      dienstleistungen:
+                        type: string 
+                      ortStrasse:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                            example: 38287
+                          plz: 
+                            type: string
+                            example: '90439'
+                          name: 
+                            type: string
+                            example: "Nürnberg, Mittelfranken"
+                          land:
+                            type: object
+                            properties: 
+                              id: 
+                                type: integer
+                                example: 2
+                              name: 
+                                type: string
+                                example: Bayern
+                              laenderCode: 
+                                type: string 
+                                example: D
+                              bundeslandCode: 
+                                type: string
+                                example: BAY
+                              code: 
+                                type: string
+                                example: BAY
+                      koordinaten:
+                        type: object
+                        properties: 
+                          lat: 
+                            type: number
+                            example: 19.440563
+                          lon: 
+                            type: number
+                            example: 41.03888               
+                  azubiGeeignet: 
+                    type: boolean
+                    example: false
+                  ansprechpartner: 
+                    type: array
+                    items:
+                      type: object
+                  abstaende:
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        ort:
+                          type: object
+                          properties: 
+                            name: 
+                              type: string
+                              example: Feucht
+                            postleitzahl: 
+                              type: string                             
+                            laengengrad: 
+                              type: number
+                              example: 11.2147
+                            breitengrad: 
+                              type: number
+                              example: 11.2147
+                        abstandInKm: 
+                          type: integer 
+                          example: 2.975638573076752
+
+
+            _links: 
+              type: object
+              properties: 
+                first: 
+                  type: object
+                  properties: 
+                    href: 
+                      type: string
+                self: 
+                  type: object
+                  properties: 
+                    href: 
+                      type: string
+                next:
+                  type: object
+                  properties:
+                    href: 
+                      type: string
+                last: 
+                  type: object
+                  properties:
+                    href: 
+                      type: string
+            page:
+              type: object
+              properties:
+                size: 
+                  type: integer
+                  example: 20
+                totalElements: 
+                  type: integer
+                  example: 3
+                totalPages: 
+                  type: integer
+                  example: 1
+                number: 
+                  type: integer 
+                  example: 0
+            aggregations:
+              type: object
+              properties:
+                ANZAHL_AUSGEFILTERT:
+                  type: object
+                  properties: 
+                    COUNT:
+                      type: integer
+                      example: 15592
+                KURSART: 
+                  type: array
+                  items:
+                    type: object
+                SPRACHKURSE:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id: 
+                        type: string 
+                        example: 'MC 03'
+                      anzahl: 
+                        type: integer
+                        example: 3
+                      name: 
+                        type: string
+                MIGRATIONSKURSE:
+                  type: array
+                  items:
+                    type: object
+                ANBIETER:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id: 
+                        type: integer 
+                        example: 192753
+                      anzahl: 
+                        type: integer
+                        example: 3
+                      name: 
+                        type: string
+                UNTERRICHTSFORMEN:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id: 
+                        type: integer 
+                        example: 1
+                      anzahl: 
+                        type: integer
+                        example: 2
+                      name: 
+                        type: string
+                BERUFSBEREICH:
+                  type: array
+                  items:
+                    type: object
+                BEGINNTERMIN:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id: 
+                        type: integer 
+                        example: 0
+                      anzahl: 
+                        type: integer
+                        example: 2
+                      name: 
+                        type: string
+                REGIONEN:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id: 
+                        type: string
+                        example: 'BAY'
+                      anzahl: 
+                        type: integer
+                        example: 2
+                      name: 
+                        type: string
+                ANZAHL_GESAMT:
+                  type: object
+                  properties:
+                    COUNT: 
+                      type: integer
+                      example: 3
+
+externalDocs:
+  description: "Weiterführende Dokumentation"
+  url: "https://github.com/AndreasFischer1985/berufssprachkurssuche-api"
