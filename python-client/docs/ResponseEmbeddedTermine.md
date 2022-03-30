@@ -1,0 +1,37 @@
+# ResponseEmbeddedTermine
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional] 
+**unterrichtsform** | [**ResponseEmbeddedUnterrichtsform**](ResponseEmbeddedUnterrichtsform.md) |  | [optional] 
+**foerderung** | **bool** |  | [optional] 
+**kosten_wert** | **str** |  | [optional] 
+**kosten_waehrung** | **str** |  | [optional] 
+**beginn** | **int** |  | [optional] 
+**ende** | **int** |  | [optional] 
+**dauer** | [**ResponseEmbeddedDauer**](ResponseEmbeddedDauer.md) |  | [optional] 
+**kosten_bemerkung** | **str** |  | [optional] 
+**teilnehmer_min** | **int** |  | [optional] 
+**teilnehmer_max** | **int** |  | [optional] 
+**aktualisierungsdatum** | **str** |  | [optional] 
+**bemerkung** | **str** |  | [optional] 
+**link** | **str** |  | [optional] 
+**individueller_einstieg** | **bool** |  | [optional] 
+**anmeldeschluss** | **str** |  | [optional] 
+**unterrichtszeiten** | **str** |  | [optional] 
+**bemerkung_zeit** | **str** |  | [optional] 
+**eigene_angebotsnummer** | **str** |  | [optional] 
+**pruefende_stelle** | **str** |  | [optional] 
+**angebot** | [**ResponseEmbeddedAngebot**](ResponseEmbeddedAngebot.md) |  | [optional] 
+**veranstaltungsablaeufe** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]** |  | [optional] 
+**adresse** | [**ResponseEmbeddedAdresse**](ResponseEmbeddedAdresse.md) |  | [optional] 
+**azubi_geeignet** | **bool** |  | [optional] 
+**ansprechpartner** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]** |  | [optional] 
+**abstaende** | [**[ResponseEmbeddedAbstaende]**](ResponseEmbeddedAbstaende.md) |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
