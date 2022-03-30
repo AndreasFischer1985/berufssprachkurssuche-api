@@ -63,12 +63,12 @@ paths:
           schema:
             type: string
             enum:
-                - Bundesweit
-                - 25
-                - 50
-                - 100
-                - 150
-                - 200
+                - 'Bundesweit'
+                - '25'
+                - '50'
+                - '100'
+                - '150'
+                - '200'
           description: Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
           example: "Bundesweit"
           required: false
@@ -475,10 +475,8 @@ components:
                               type: number
                               example: 11.2147
                         abstandInKm: 
-                          type: integer 
+                          type: number 
                           example: 2.975638573076752
-
-
             _links: 
               type: object
               properties: 
