@@ -48,6 +48,7 @@ class DefaultApi(object):
             },
             params_map={
                 "all": [
+                    "systematiken",
                     "suchworte",
                     "orte",
                     "page",
@@ -61,6 +62,7 @@ class DefaultApi(object):
                 "required": [],
                 "nullable": [],
                 "enum": [
+                    "systematiken",
                     "umkreis",
                     "sprachniveau",
                     "berufsfachsprachkurse",
@@ -72,6 +74,7 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {
+                    ("systematiken",): {"MC": "MC", "A8": "A8", "MQ": "MQ"},
                     ("umkreis",): {
                         "BUNDESWEIT": "Bundesweit",
                         "25": "25",
@@ -106,6 +109,7 @@ class DefaultApi(object):
                     },
                 },
                 "openapi_types": {
+                    "systematiken": (str,),
                     "suchworte": (str,),
                     "orte": (str,),
                     "page": (int,),
@@ -117,6 +121,7 @@ class DefaultApi(object):
                     "anbieter": (int,),
                 },
                 "attribute_map": {
+                    "systematiken": "systematiken",
                     "suchworte": "suchworte",
                     "orte": "orte",
                     "page": "page",
@@ -128,6 +133,7 @@ class DefaultApi(object):
                     "anbieter": "anbieter",
                 },
                 "location_map": {
+                    "systematiken": "query",
                     "suchworte": "query",
                     "orte": "query",
                     "page": "query",
@@ -159,6 +165,7 @@ class DefaultApi(object):
 
 
         Keyword Args:
+            systematiken (str): Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.. [optional]
             suchworte (str): Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich.. [optional]
             orte (str): Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich.. [optional]
             page (int): Seite (beginnend mit 0 für die erste Seite).. [optional]
