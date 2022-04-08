@@ -29,13 +29,22 @@ Der Token ist via POST-request von https://rest.arbeitsagentur.de/oauth/gettoken
 **URL:** https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot
 
 
-Die Berufssprachkurssuche ermöglicht verfügbare Berufssprachkursangebote mit verschiedenen GET-Parametern zu filtern:
+Die Berufssprachkurssuche ermöglicht verfügbare Berufssprachkursangebote und andere Kursarten (z..B. Bildungsangebote Migration oder Angebote in Zusammenhang mit der Anerkennung ausländischer Berufsabschlüsse) mit verschiedenen GET-Parametern zu filtern:
 
 
 ### Filter
 
 
-Parameter: suchworte (Optional)
+**Parameter:** systematiken (Optional)
+
+- MC
+- A8
+- MQ
+
+Kursart: MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.
+
+
+**Parameter:** suchworte (Optional)
 
 Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich.
 

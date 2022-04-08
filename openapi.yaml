@@ -34,6 +34,19 @@ paths:
                 schema:
                   $ref: '#/components/schemas/Response'
       parameters:
+
+        - in: query
+          name: systematiken
+          schema:
+            type: string
+            enum:
+                - 'MC'
+                - 'A8'
+                - 'MQ'
+          description: Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.
+          example: "MC"
+          required: false
+
         - in: query
           name: suchworte
           schema:
