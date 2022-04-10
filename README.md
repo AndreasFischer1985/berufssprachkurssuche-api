@@ -1,10 +1,10 @@
-﻿# Arbeitsagentur Berufssprachkurssuche API 
+# Arbeitsagentur Berufssprachkurssuche API 
 Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für Berufssprachkurse. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
 	
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind folgende:
+Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/sprachfoerderung/suche/berufssprachkurse entnehmen lässt, folgende:
 
 **ClientID:** bd24f42e-ad0b-4005-b834-23bb6800dc6c
 
