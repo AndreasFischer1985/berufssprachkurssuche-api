@@ -26,6 +26,8 @@ paths:
       summary: Berufssprachkurssuche
       description: "Die Berufssprachkurssuche ermöglicht verfügbare Berufssprachkursangebote mit verschiedenen GET-Parametern zu filtern."
       operationId: berufssprachkurssuche
+      tags:
+        - berufssprachkurse      
       responses:
         '200':
             description: OK
