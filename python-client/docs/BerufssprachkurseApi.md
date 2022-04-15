@@ -1,10 +1,10 @@
-# berufssprachkurssuche.DefaultApi
+# berufssprachkurssuche.BerufssprachkurseApi
 
 All URIs are relative to *https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**berufssprachkurssuche**](DefaultApi.md#berufssprachkurssuche) | **GET** /pc/v1/bildungsangebot | Berufssprachkurssuche
+[**berufssprachkurssuche**](BerufssprachkurseApi.md#berufssprachkurssuche) | **GET** /pc/v1/bildungsangebot | Berufssprachkurssuche
 
 
 # **berufssprachkurssuche**
@@ -21,7 +21,7 @@ Die Berufssprachkurssuche ermöglicht verfügbare Berufssprachkursangebote mit v
 ```python
 import time
 from deutschland import berufssprachkurssuche
-from deutschland.berufssprachkurssuche.api import default_api
+from deutschland.berufssprachkurssuche.api import berufssprachkurse_api
 from deutschland.berufssprachkurssuche.model.response import Response
 from pprint import pprint
 # Defining the host is optional and defaults to https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung
@@ -44,7 +44,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with berufssprachkurssuche.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = berufssprachkurse_api.BerufssprachkurseApi(api_client)
     systematiken = "MC" # str | Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse. (optional)
     suchworte = "Deutschsprachf%25C3%25B6rderung" # str | Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich. (optional)
     orte = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich. (optional)
@@ -63,7 +63,7 @@ with berufssprachkurssuche.ApiClient(configuration) as api_client:
         api_response = api_instance.berufssprachkurssuche(systematiken=systematiken, suchworte=suchworte, orte=orte, page=page, umkreis=umkreis, sprachniveau=sprachniveau, berufsfachsprachkurse=berufsfachsprachkurse, beginntermine=beginntermine, unterrichtsformen=unterrichtsformen, anbieter=anbieter)
         pprint(api_response)
     except berufssprachkurssuche.ApiException as e:
-        print("Exception when calling DefaultApi->berufssprachkurssuche: %s\n" % e)
+        print("Exception when calling BerufssprachkurseApi->berufssprachkurssuche: %s\n" % e)
 ```
 
 

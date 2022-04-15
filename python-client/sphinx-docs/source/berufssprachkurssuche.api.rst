@@ -4,10 +4,10 @@ berufssprachkurssuche.api package
 Submodules
 ----------
 
-berufssprachkurssuche.api.default\_api module
----------------------------------------------
+berufssprachkurssuche.api.berufssprachkurse\_api module
+-------------------------------------------------------
 
-.. automodule:: berufssprachkurssuche.api.default_api
+.. automodule:: berufssprachkurssuche.api.berufssprachkurse_api
    :members:
    :undoc-members:
    :show-inheritance:

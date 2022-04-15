@@ -5,7 +5,7 @@
 README.md
 berufssprachkurssuche/__init__.py
 berufssprachkurssuche/api/__init__.py
-berufssprachkurssuche/api/default_api.py
+berufssprachkurssuche/api/berufssprachkurse_api.py
 berufssprachkurssuche/api_client.py
 berufssprachkurssuche/apis/__init__.py
 berufssprachkurssuche/configuration.py
@@ -45,7 +45,7 @@ berufssprachkurssuche/model_utils.py
 berufssprachkurssuche/models/__init__.py
 berufssprachkurssuche/rest.py
 create_doc.py
-docs/DefaultApi.md
+docs/BerufssprachkurseApi.md
 docs/Response.md
 docs/ResponseEmbedded.md
 docs/ResponseEmbeddedAbstaende.md
@@ -85,7 +85,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_default_api.py
+test/test_berufssprachkurse_api.py
 test/test_response.py
 test/test_response_embedded.py
 test/test_response_embedded_abstaende.py

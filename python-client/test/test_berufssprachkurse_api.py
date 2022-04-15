@@ -11,16 +11,18 @@
 
 import unittest
 
-from deutschland.berufssprachkurssuche.api.default_api import DefaultApi  # noqa: E501
+from deutschland.berufssprachkurssuche.api.berufssprachkurse_api import (  # noqa: E501
+    BerufssprachkurseApi,
+)
 
 from deutschland import berufssprachkurssuche
 
 
-class TestDefaultApi(unittest.TestCase):
-    """DefaultApi unit test stubs"""
+class TestBerufssprachkurseApi(unittest.TestCase):
+    """BerufssprachkurseApi unit test stubs"""
 
     def setUp(self):
-        self.api = DefaultApi()  # noqa: E501
+        self.api = BerufssprachkurseApi()  # noqa: E501
 
     def tearDown(self):
         pass

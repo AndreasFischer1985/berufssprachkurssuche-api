@@ -5,7 +5,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from deutschland.berufssprachkurssuche.api.default_api import DefaultApi
+#   from deutschland.berufssprachkurssuche.api.berufssprachkurse_api import BerufssprachkurseApi
 #
 # or import this package, but before doing it, use:
 #
@@ -13,4 +13,6 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
-from deutschland.berufssprachkurssuche.api.default_api import DefaultApi
+from deutschland.berufssprachkurssuche.api.berufssprachkurse_api import (
+    BerufssprachkurseApi,
+)
