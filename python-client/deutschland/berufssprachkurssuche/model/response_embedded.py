@@ -40,14 +40,14 @@ def lazy_import():
     from deutschland.berufssprachkurssuche.model.response_embedded_page import (
         ResponseEmbeddedPage,
     )
-    from deutschland.berufssprachkurssuche.model.response_embedded_termine import (
-        ResponseEmbeddedTermine,
+    from deutschland.berufssprachkurssuche.model.response_embedded_termine_inner import (
+        ResponseEmbeddedTermineInner,
     )
 
     globals()["ResponseEmbeddedAggregations"] = ResponseEmbeddedAggregations
     globals()["ResponseEmbeddedLinks"] = ResponseEmbeddedLinks
     globals()["ResponseEmbeddedPage"] = ResponseEmbeddedPage
-    globals()["ResponseEmbeddedTermine"] = ResponseEmbeddedTermine
+    globals()["ResponseEmbeddedTermineInner"] = ResponseEmbeddedTermineInner
 
 
 class ResponseEmbedded(ModelNormal):
@@ -111,7 +111,7 @@ class ResponseEmbedded(ModelNormal):
         """
         lazy_import()
         return {
-            "termine": ([ResponseEmbeddedTermine],),  # noqa: E501
+            "termine": ([ResponseEmbeddedTermineInner],),  # noqa: E501
             "links": (ResponseEmbeddedLinks,),  # noqa: E501
             "page": (ResponseEmbeddedPage,),  # noqa: E501
             "aggregations": (ResponseEmbeddedAggregations,),  # noqa: E501
@@ -168,7 +168,7 @@ class ResponseEmbedded(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            termine ([ResponseEmbeddedTermine]): [optional]  # noqa: E501
+            termine ([ResponseEmbeddedTermineInner]): [optional]  # noqa: E501
             links (ResponseEmbeddedLinks): [optional]  # noqa: E501
             page (ResponseEmbeddedPage): [optional]  # noqa: E501
             aggregations (ResponseEmbeddedAggregations): [optional]  # noqa: E501
@@ -262,7 +262,7 @@ class ResponseEmbedded(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            termine ([ResponseEmbeddedTermine]): [optional]  # noqa: E501
+            termine ([ResponseEmbeddedTermineInner]): [optional]  # noqa: E501
             links (ResponseEmbeddedLinks): [optional]  # noqa: E501
             page (ResponseEmbeddedPage): [optional]  # noqa: E501
             aggregations (ResponseEmbeddedAggregations): [optional]  # noqa: E501
