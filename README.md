@@ -4,7 +4,7 @@ Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/sprachfoerderung/suche/berufssprachkurse entnehmen lässt, folgende:
+Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/sprachfoerderung/suche/berufssprachkurse entnehmen lässt (oder an https://web.arbeitsagentur.de/sprachfoerderung/suche/anerkennungen, oder an https://web.arbeitsagentur.de/sprachfoerderung/suche/sonstige-kurse), folgende:
 
 **ClientID:** bd24f42e-ad0b-4005-b834-23bb6800dc6c
 
