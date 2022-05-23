@@ -12,7 +12,7 @@ Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsa
 
 **grant_type:** client_credentials
 
-Die Credentials sind im body POST-request an https://rest.arbeitsagentur.de/oauth/gettoken_cc zu senden.
+Die Credentials sind im body eines POST-request an https://rest.arbeitsagentur.de/oauth/gettoken_cc zu senden.
 
 ```bash
 token=$(curl \
@@ -20,7 +20,7 @@ token=$(curl \
 -X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
 ```
 
-Der Token ist via POST-request von https://rest.arbeitsagentur.de/oauth/gettoken_cc zu beziehen und muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
+Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
 
 
 ## Berufssprachkurssuche
