@@ -6,19 +6,18 @@ Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
 Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/sprachfoerderung/suche/berufssprachkurse entnehmen lässt (oder an https://web.arbeitsagentur.de/sprachfoerderung/suche/anerkennungen, oder an https://web.arbeitsagentur.de/sprachfoerderung/suche/sonstige-kurse), folgende:
 
-**ClientID:** bd24f42e-ad0b-4005-b834-23bb6800dc6c
+**client_id:** bd24f42e-ad0b-4005-b834-23bb6800dc6c
 
-**ClientSecret:** 6776b89e-5728-4643-8cd5-c93aefb5314b
+**client_secret:** 6776b89e-5728-4643-8cd5-c93aefb5314b
+
+**grant_type:** client_credentials
+
+Die Credentials sind im body POST-request an https://rest.arbeitsagentur.de/oauth/gettoken_cc zu senden.
 
 ```bash
-curl \
--H 'Host: rest.arbeitsagentur.de' \
--H 'Accept: */*' \
--H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
--H 'Accept-Language: de,en-US;q=0.7,en;q=0.3' \
--H 'User-Agent:  Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
---data-binary "client_id=bd24f42e-ad0b-4005-b834-23bb6800dc6c&client_secret=6776b89e-5728-4643-8cd5-c93aefb5314b&grant_type=client_credentials" \
---compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
+token=$(curl \
+-d "client_id=bd24f42e-ad0b-4005-b834-23bb6800dc6c&client_secret=6776b89e-5728-4643-8cd5-c93aefb5314b&grant_type=client_credentials" \
+-X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
 ```
 
 Der Token ist via POST-request von https://rest.arbeitsagentur.de/oauth/gettoken_cc zu beziehen und muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
@@ -128,16 +127,7 @@ Bei größeren Treffermengen ist für die Verwendung des Filters nach Anbietern 
 ### Beispiel:
 
 ```bash
-wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
--H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
--H "Accept: application/json, text/plain, */*" \
--H "Accept-Language: de,en-US;q=0.7,en;q=0.3" \
--H "Accept-Encoding: gzip, deflate, br" \
--H "Origin: https://web.arbeitsagentur.de" \
--H "DNT: 1" \
--H "Connection: keep-alive" \
--H "Pragma: no-cache" \
--H "Cache-Control: no-cache" \
+bs=$(curl -m 60 \
 -H "OAuthAccessToken: $token" \
 'https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot?systematiken=MC&page=0&umkreis=50&orte=Feucht_11.2147_49.375&sort=basc')
 ```
