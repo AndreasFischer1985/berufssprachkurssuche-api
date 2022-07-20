@@ -11,9 +11,18 @@ token_request=httr::POST(
         body=postData,encode="form",
         config=httr::config(connecttimeout=60))
 token=(httr::content(token_request, as='parsed')$access_token)
-url="https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot?systematiken=MC&page=0&umkreis=50&orte=Feucht_11.2147_49.375&sort=basc"
+url="https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot?systematiken=MC&page=0&umkreis=bundesweit&sort=basc"
 data_request=httr::GET(url=url, httr::add_headers(.headers=c("OAuthAccessToken"=token)),
         config=httr::config(connecttimeout=60))
 data_request
-data=rawToChar(httr::content(data_request))
-
+data=rjson::fromJSON(rawToChar(httr::content(data_request)))
+maxPage=data$page$totalPages
+completeData=lapply(1:maxPage,function(i){
+        print(i);
+	rjson::fromJSON(rawToChar(httr::content(
+		httr::GET(url=paste0("https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung/pc/v1/bildungsangebot",
+				"?systematiken=MC&page=",i,"&umkreis=bundesweit&sort=basc"), 
+			httr::add_headers(.headers=c("OAuthAccessToken"=token)),
+        		config=httr::config(connecttimeout=60))
+		)))
+})
