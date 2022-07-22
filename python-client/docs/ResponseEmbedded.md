@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**termine** | [**[ResponseEmbeddedTermine]**](ResponseEmbeddedTermine.md) |  | [optional] 
+**termine** | [**[ResponseEmbeddedTermineInner]**](ResponseEmbeddedTermineInner.md) |  | [optional] 
 **links** | [**ResponseEmbeddedLinks**](ResponseEmbeddedLinks.md) |  | [optional] 
 **page** | [**ResponseEmbeddedPage**](ResponseEmbeddedPage.md) |  | [optional] 
 **aggregations** | [**ResponseEmbeddedAggregations**](ResponseEmbeddedAggregations.md) |  | [optional] 

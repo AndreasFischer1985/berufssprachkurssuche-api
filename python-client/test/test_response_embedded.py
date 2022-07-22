@@ -21,8 +21,8 @@ from deutschland.berufssprachkurssuche.model.response_embedded_links import (
 from deutschland.berufssprachkurssuche.model.response_embedded_page import (
     ResponseEmbeddedPage,
 )
-from deutschland.berufssprachkurssuche.model.response_embedded_termine import (
-    ResponseEmbeddedTermine,
+from deutschland.berufssprachkurssuche.model.response_embedded_termine_inner import (
+    ResponseEmbeddedTermineInner,
 )
 
 from deutschland import berufssprachkurssuche
@@ -30,7 +30,7 @@ from deutschland import berufssprachkurssuche
 globals()["ResponseEmbeddedAggregations"] = ResponseEmbeddedAggregations
 globals()["ResponseEmbeddedLinks"] = ResponseEmbeddedLinks
 globals()["ResponseEmbeddedPage"] = ResponseEmbeddedPage
-globals()["ResponseEmbeddedTermine"] = ResponseEmbeddedTermine
+globals()["ResponseEmbeddedTermineInner"] = ResponseEmbeddedTermineInner
 from deutschland.berufssprachkurssuche.model.response_embedded import ResponseEmbedded
 
 

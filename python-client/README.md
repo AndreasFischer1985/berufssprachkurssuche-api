@@ -59,7 +59,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import time
 from deutschland import berufssprachkurssuche
 from pprint import pprint
-from deutschland.berufssprachkurssuche.api import default_api
+from deutschland.berufssprachkurssuche.api import berufssprachkurse_api
 from deutschland.berufssprachkurssuche.model.response import Response
 # Defining the host is optional and defaults to https://rest.arbeitsagentur.de/infosysbub/sprachfoerderung
 # See configuration.py for a list of all supported configuration parameters.
@@ -82,7 +82,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with berufssprachkurssuche.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = berufssprachkurse_api.BerufssprachkurseApi(api_client)
     systematiken = "MC" # str | Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse. (optional)
     suchworte = "Deutschsprachf%25C3%25B6rderung" # str | Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich. (optional)
     orte = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich. (optional)
@@ -99,7 +99,7 @@ with berufssprachkurssuche.ApiClient(configuration) as api_client:
         api_response = api_instance.berufssprachkurssuche(systematiken=systematiken, suchworte=suchworte, orte=orte, page=page, umkreis=umkreis, sprachniveau=sprachniveau, berufsfachsprachkurse=berufsfachsprachkurse, beginntermine=beginntermine, unterrichtsformen=unterrichtsformen, anbieter=anbieter)
         pprint(api_response)
     except berufssprachkurssuche.ApiException as e:
-        print("Exception when calling DefaultApi->berufssprachkurssuche: %s\n" % e)
+        print("Exception when calling BerufssprachkurseApi->berufssprachkurssuche: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -108,41 +108,41 @@ All URIs are relative to *https://rest.arbeitsagentur.de/infosysbub/sprachfoerde
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**berufssprachkurssuche**](docs/DefaultApi.md#berufssprachkurssuche) | **GET** /pc/v1/bildungsangebot | Berufssprachkurssuche
+*BerufssprachkurseApi* | [**berufssprachkurssuche**](docs/BerufssprachkurseApi.md#berufssprachkurssuche) | **GET** /pc/v1/bildungsangebot | Berufssprachkurssuche
 
 
 ## Documentation For Models
 
  - [Response](docs/Response.md)
  - [ResponseEmbedded](docs/ResponseEmbedded.md)
- - [ResponseEmbeddedAbstaende](docs/ResponseEmbeddedAbstaende.md)
- - [ResponseEmbeddedAdresse](docs/ResponseEmbeddedAdresse.md)
- - [ResponseEmbeddedAdresseKoordinaten](docs/ResponseEmbeddedAdresseKoordinaten.md)
  - [ResponseEmbeddedAggregations](docs/ResponseEmbeddedAggregations.md)
- - [ResponseEmbeddedAggregationsANBIETER](docs/ResponseEmbeddedAggregationsANBIETER.md)
+ - [ResponseEmbeddedAggregationsANBIETERInner](docs/ResponseEmbeddedAggregationsANBIETERInner.md)
  - [ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT](docs/ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT.md)
  - [ResponseEmbeddedAggregationsANZAHLGESAMT](docs/ResponseEmbeddedAggregationsANZAHLGESAMT.md)
- - [ResponseEmbeddedAggregationsBEGINNTERMIN](docs/ResponseEmbeddedAggregationsBEGINNTERMIN.md)
- - [ResponseEmbeddedAggregationsREGIONEN](docs/ResponseEmbeddedAggregationsREGIONEN.md)
- - [ResponseEmbeddedAggregationsSPRACHKURSE](docs/ResponseEmbeddedAggregationsSPRACHKURSE.md)
- - [ResponseEmbeddedAggregationsUNTERRICHTSFORMEN](docs/ResponseEmbeddedAggregationsUNTERRICHTSFORMEN.md)
- - [ResponseEmbeddedAngebot](docs/ResponseEmbeddedAngebot.md)
- - [ResponseEmbeddedAngebotBildungsanbieter](docs/ResponseEmbeddedAngebotBildungsanbieter.md)
- - [ResponseEmbeddedAngebotBildungsanbieterAdresse](docs/ResponseEmbeddedAngebotBildungsanbieterAdresse.md)
- - [ResponseEmbeddedAngebotBildungsanbieterAdresseKoordinaten](docs/ResponseEmbeddedAngebotBildungsanbieterAdresseKoordinaten.md)
- - [ResponseEmbeddedAngebotBildungsanbieterAdresseOrtStrasse](docs/ResponseEmbeddedAngebotBildungsanbieterAdresseOrtStrasse.md)
- - [ResponseEmbeddedAngebotBildungsanbieterAdresseOrtStrasseLand](docs/ResponseEmbeddedAngebotBildungsanbieterAdresseOrtStrasseLand.md)
- - [ResponseEmbeddedAngebotBildungsart](docs/ResponseEmbeddedAngebotBildungsart.md)
- - [ResponseEmbeddedAngebotSchulart](docs/ResponseEmbeddedAngebotSchulart.md)
- - [ResponseEmbeddedAngebotSuchworte](docs/ResponseEmbeddedAngebotSuchworte.md)
- - [ResponseEmbeddedAngebotSystematiken](docs/ResponseEmbeddedAngebotSystematiken.md)
- - [ResponseEmbeddedDauer](docs/ResponseEmbeddedDauer.md)
+ - [ResponseEmbeddedAggregationsBEGINNTERMINInner](docs/ResponseEmbeddedAggregationsBEGINNTERMINInner.md)
+ - [ResponseEmbeddedAggregationsREGIONENInner](docs/ResponseEmbeddedAggregationsREGIONENInner.md)
+ - [ResponseEmbeddedAggregationsSPRACHKURSEInner](docs/ResponseEmbeddedAggregationsSPRACHKURSEInner.md)
+ - [ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner](docs/ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner.md)
  - [ResponseEmbeddedLinks](docs/ResponseEmbeddedLinks.md)
  - [ResponseEmbeddedLinksFirst](docs/ResponseEmbeddedLinksFirst.md)
- - [ResponseEmbeddedOrt](docs/ResponseEmbeddedOrt.md)
  - [ResponseEmbeddedPage](docs/ResponseEmbeddedPage.md)
- - [ResponseEmbeddedTermine](docs/ResponseEmbeddedTermine.md)
- - [ResponseEmbeddedUnterrichtsform](docs/ResponseEmbeddedUnterrichtsform.md)
+ - [ResponseEmbeddedTermineInner](docs/ResponseEmbeddedTermineInner.md)
+ - [ResponseEmbeddedTermineInnerAbstaendeInner](docs/ResponseEmbeddedTermineInnerAbstaendeInner.md)
+ - [ResponseEmbeddedTermineInnerAbstaendeInnerOrt](docs/ResponseEmbeddedTermineInnerAbstaendeInnerOrt.md)
+ - [ResponseEmbeddedTermineInnerAdresse](docs/ResponseEmbeddedTermineInnerAdresse.md)
+ - [ResponseEmbeddedTermineInnerAdresseKoordinaten](docs/ResponseEmbeddedTermineInnerAdresseKoordinaten.md)
+ - [ResponseEmbeddedTermineInnerAngebot](docs/ResponseEmbeddedTermineInnerAngebot.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsanbieter](docs/ResponseEmbeddedTermineInnerAngebotBildungsanbieter.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresse](docs/ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresse.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseKoordinaten](docs/ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseKoordinaten.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseOrtStrasse](docs/ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseOrtStrasse.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseOrtStrasseLand](docs/ResponseEmbeddedTermineInnerAngebotBildungsanbieterAdresseOrtStrasseLand.md)
+ - [ResponseEmbeddedTermineInnerAngebotBildungsart](docs/ResponseEmbeddedTermineInnerAngebotBildungsart.md)
+ - [ResponseEmbeddedTermineInnerAngebotSchulart](docs/ResponseEmbeddedTermineInnerAngebotSchulart.md)
+ - [ResponseEmbeddedTermineInnerAngebotSuchworteInner](docs/ResponseEmbeddedTermineInnerAngebotSuchworteInner.md)
+ - [ResponseEmbeddedTermineInnerAngebotSystematikenInner](docs/ResponseEmbeddedTermineInnerAngebotSystematikenInner.md)
+ - [ResponseEmbeddedTermineInnerDauer](docs/ResponseEmbeddedTermineInnerDauer.md)
+ - [ResponseEmbeddedTermineInnerUnterrichtsform](docs/ResponseEmbeddedTermineInnerUnterrichtsform.md)
 
 
 ## Documentation For Authorization

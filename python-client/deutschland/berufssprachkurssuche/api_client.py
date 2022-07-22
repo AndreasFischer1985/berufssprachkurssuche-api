@@ -734,7 +734,7 @@ class ApiClient(object):
         self, headers, queries, resource_path, method, body, auth_setting
     ):
         if auth_setting["in"] == "cookie":
-            headers["Cookie"] = auth_setting["value"]
+            headers["Cookie"] = auth_setting["key"] + "=" + auth_setting["value"]
         elif auth_setting["in"] == "header":
             if auth_setting["type"] != "http-signature":
                 headers[auth_setting["key"]] = auth_setting["value"]
@@ -907,7 +907,7 @@ class Endpoint(object):
         """This method is invoked when endpoints are called
         Example:
 
-        api_instance = DefaultApi()
+        api_instance = BerufssprachkurseApi()
         api_instance.berufssprachkurssuche  # this is an instance of the class Endpoint
         api_instance.berufssprachkurssuche()  # this invokes api_instance.berufssprachkurssuche.__call__()
         which then invokes the callable functions stored in that endpoint at

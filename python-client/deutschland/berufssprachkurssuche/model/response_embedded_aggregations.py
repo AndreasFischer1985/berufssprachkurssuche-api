@@ -31,8 +31,8 @@ from deutschland.berufssprachkurssuche.model_utils import (  # noqa: F401
 
 
 def lazy_import():
-    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anbieter import (
-        ResponseEmbeddedAggregationsANBIETER,
+    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anbieter_inner import (
+        ResponseEmbeddedAggregationsANBIETERInner,
     )
     from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anzahlausgefiltert import (
         ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT,
@@ -40,22 +40,22 @@ def lazy_import():
     from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anzahlgesamt import (
         ResponseEmbeddedAggregationsANZAHLGESAMT,
     )
-    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_beginntermin import (
-        ResponseEmbeddedAggregationsBEGINNTERMIN,
+    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_beginntermin_inner import (
+        ResponseEmbeddedAggregationsBEGINNTERMINInner,
     )
-    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_regionen import (
-        ResponseEmbeddedAggregationsREGIONEN,
+    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_regionen_inner import (
+        ResponseEmbeddedAggregationsREGIONENInner,
     )
-    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_sprachkurse import (
-        ResponseEmbeddedAggregationsSPRACHKURSE,
+    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_sprachkurse_inner import (
+        ResponseEmbeddedAggregationsSPRACHKURSEInner,
     )
-    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_unterrichtsformen import (
-        ResponseEmbeddedAggregationsUNTERRICHTSFORMEN,
+    from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_unterrichtsformen_inner import (
+        ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner,
     )
 
     globals()[
-        "ResponseEmbeddedAggregationsANBIETER"
-    ] = ResponseEmbeddedAggregationsANBIETER
+        "ResponseEmbeddedAggregationsANBIETERInner"
+    ] = ResponseEmbeddedAggregationsANBIETERInner
     globals()[
         "ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT"
     ] = ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT
@@ -63,17 +63,17 @@ def lazy_import():
         "ResponseEmbeddedAggregationsANZAHLGESAMT"
     ] = ResponseEmbeddedAggregationsANZAHLGESAMT
     globals()[
-        "ResponseEmbeddedAggregationsBEGINNTERMIN"
-    ] = ResponseEmbeddedAggregationsBEGINNTERMIN
+        "ResponseEmbeddedAggregationsBEGINNTERMINInner"
+    ] = ResponseEmbeddedAggregationsBEGINNTERMINInner
     globals()[
-        "ResponseEmbeddedAggregationsREGIONEN"
-    ] = ResponseEmbeddedAggregationsREGIONEN
+        "ResponseEmbeddedAggregationsREGIONENInner"
+    ] = ResponseEmbeddedAggregationsREGIONENInner
     globals()[
-        "ResponseEmbeddedAggregationsSPRACHKURSE"
-    ] = ResponseEmbeddedAggregationsSPRACHKURSE
+        "ResponseEmbeddedAggregationsSPRACHKURSEInner"
+    ] = ResponseEmbeddedAggregationsSPRACHKURSEInner
     globals()[
-        "ResponseEmbeddedAggregationsUNTERRICHTSFORMEN"
-    ] = ResponseEmbeddedAggregationsUNTERRICHTSFORMEN
+        "ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner"
+    ] = ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner
 
 
 class ResponseEmbeddedAggregations(ModelNormal):
@@ -143,19 +143,23 @@ class ResponseEmbeddedAggregations(ModelNormal):
             "kursart": (
                 [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],
             ),  # noqa: E501
-            "sprachkurse": ([ResponseEmbeddedAggregationsSPRACHKURSE],),  # noqa: E501
+            "sprachkurse": (
+                [ResponseEmbeddedAggregationsSPRACHKURSEInner],
+            ),  # noqa: E501
             "migrationskurse": (
                 [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],
             ),  # noqa: E501
-            "anbieter": ([ResponseEmbeddedAggregationsANBIETER],),  # noqa: E501
+            "anbieter": ([ResponseEmbeddedAggregationsANBIETERInner],),  # noqa: E501
             "unterrichtsformen": (
-                [ResponseEmbeddedAggregationsUNTERRICHTSFORMEN],
+                [ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner],
             ),  # noqa: E501
             "berufsbereich": (
                 [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],
             ),  # noqa: E501
-            "beginntermin": ([ResponseEmbeddedAggregationsBEGINNTERMIN],),  # noqa: E501
-            "regionen": ([ResponseEmbeddedAggregationsREGIONEN],),  # noqa: E501
+            "beginntermin": (
+                [ResponseEmbeddedAggregationsBEGINNTERMINInner],
+            ),  # noqa: E501
+            "regionen": ([ResponseEmbeddedAggregationsREGIONENInner],),  # noqa: E501
             "anzahl_gesamt": (ResponseEmbeddedAggregationsANZAHLGESAMT,),  # noqa: E501
         }
 
@@ -218,13 +222,13 @@ class ResponseEmbeddedAggregations(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             anzahl_ausgefiltert (ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT): [optional]  # noqa: E501
             kursart ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            sprachkurse ([ResponseEmbeddedAggregationsSPRACHKURSE]): [optional]  # noqa: E501
+            sprachkurse ([ResponseEmbeddedAggregationsSPRACHKURSEInner]): [optional]  # noqa: E501
             migrationskurse ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            anbieter ([ResponseEmbeddedAggregationsANBIETER]): [optional]  # noqa: E501
-            unterrichtsformen ([ResponseEmbeddedAggregationsUNTERRICHTSFORMEN]): [optional]  # noqa: E501
+            anbieter ([ResponseEmbeddedAggregationsANBIETERInner]): [optional]  # noqa: E501
+            unterrichtsformen ([ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner]): [optional]  # noqa: E501
             berufsbereich ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            beginntermin ([ResponseEmbeddedAggregationsBEGINNTERMIN]): [optional]  # noqa: E501
-            regionen ([ResponseEmbeddedAggregationsREGIONEN]): [optional]  # noqa: E501
+            beginntermin ([ResponseEmbeddedAggregationsBEGINNTERMINInner]): [optional]  # noqa: E501
+            regionen ([ResponseEmbeddedAggregationsREGIONENInner]): [optional]  # noqa: E501
             anzahl_gesamt (ResponseEmbeddedAggregationsANZAHLGESAMT): [optional]  # noqa: E501
         """
 
@@ -318,13 +322,13 @@ class ResponseEmbeddedAggregations(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             anzahl_ausgefiltert (ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT): [optional]  # noqa: E501
             kursart ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            sprachkurse ([ResponseEmbeddedAggregationsSPRACHKURSE]): [optional]  # noqa: E501
+            sprachkurse ([ResponseEmbeddedAggregationsSPRACHKURSEInner]): [optional]  # noqa: E501
             migrationskurse ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            anbieter ([ResponseEmbeddedAggregationsANBIETER]): [optional]  # noqa: E501
-            unterrichtsformen ([ResponseEmbeddedAggregationsUNTERRICHTSFORMEN]): [optional]  # noqa: E501
+            anbieter ([ResponseEmbeddedAggregationsANBIETERInner]): [optional]  # noqa: E501
+            unterrichtsformen ([ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner]): [optional]  # noqa: E501
             berufsbereich ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
-            beginntermin ([ResponseEmbeddedAggregationsBEGINNTERMIN]): [optional]  # noqa: E501
-            regionen ([ResponseEmbeddedAggregationsREGIONEN]): [optional]  # noqa: E501
+            beginntermin ([ResponseEmbeddedAggregationsBEGINNTERMINInner]): [optional]  # noqa: E501
+            regionen ([ResponseEmbeddedAggregationsREGIONENInner]): [optional]  # noqa: E501
             anzahl_gesamt (ResponseEmbeddedAggregationsANZAHLGESAMT): [optional]  # noqa: E501
         """
 

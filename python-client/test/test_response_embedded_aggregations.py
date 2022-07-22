@@ -12,8 +12,8 @@
 import sys
 import unittest
 
-from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anbieter import (
-    ResponseEmbeddedAggregationsANBIETER,
+from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anbieter_inner import (
+    ResponseEmbeddedAggregationsANBIETERInner,
 )
 from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anzahlausgefiltert import (
     ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT,
@@ -21,22 +21,24 @@ from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anza
 from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_anzahlgesamt import (
     ResponseEmbeddedAggregationsANZAHLGESAMT,
 )
-from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_beginntermin import (
-    ResponseEmbeddedAggregationsBEGINNTERMIN,
+from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_beginntermin_inner import (
+    ResponseEmbeddedAggregationsBEGINNTERMINInner,
 )
-from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_regionen import (
-    ResponseEmbeddedAggregationsREGIONEN,
+from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_regionen_inner import (
+    ResponseEmbeddedAggregationsREGIONENInner,
 )
-from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_sprachkurse import (
-    ResponseEmbeddedAggregationsSPRACHKURSE,
+from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_sprachkurse_inner import (
+    ResponseEmbeddedAggregationsSPRACHKURSEInner,
 )
-from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_unterrichtsformen import (
-    ResponseEmbeddedAggregationsUNTERRICHTSFORMEN,
+from deutschland.berufssprachkurssuche.model.response_embedded_aggregations_unterrichtsformen_inner import (
+    ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner,
 )
 
 from deutschland import berufssprachkurssuche
 
-globals()["ResponseEmbeddedAggregationsANBIETER"] = ResponseEmbeddedAggregationsANBIETER
+globals()[
+    "ResponseEmbeddedAggregationsANBIETERInner"
+] = ResponseEmbeddedAggregationsANBIETERInner
 globals()[
     "ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT"
 ] = ResponseEmbeddedAggregationsANZAHLAUSGEFILTERT
@@ -44,15 +46,17 @@ globals()[
     "ResponseEmbeddedAggregationsANZAHLGESAMT"
 ] = ResponseEmbeddedAggregationsANZAHLGESAMT
 globals()[
-    "ResponseEmbeddedAggregationsBEGINNTERMIN"
-] = ResponseEmbeddedAggregationsBEGINNTERMIN
-globals()["ResponseEmbeddedAggregationsREGIONEN"] = ResponseEmbeddedAggregationsREGIONEN
+    "ResponseEmbeddedAggregationsBEGINNTERMINInner"
+] = ResponseEmbeddedAggregationsBEGINNTERMINInner
 globals()[
-    "ResponseEmbeddedAggregationsSPRACHKURSE"
-] = ResponseEmbeddedAggregationsSPRACHKURSE
+    "ResponseEmbeddedAggregationsREGIONENInner"
+] = ResponseEmbeddedAggregationsREGIONENInner
 globals()[
-    "ResponseEmbeddedAggregationsUNTERRICHTSFORMEN"
-] = ResponseEmbeddedAggregationsUNTERRICHTSFORMEN
+    "ResponseEmbeddedAggregationsSPRACHKURSEInner"
+] = ResponseEmbeddedAggregationsSPRACHKURSEInner
+globals()[
+    "ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner"
+] = ResponseEmbeddedAggregationsUNTERRICHTSFORMENInner
 from deutschland.berufssprachkurssuche.model.response_embedded_aggregations import (
     ResponseEmbeddedAggregations,
 )
