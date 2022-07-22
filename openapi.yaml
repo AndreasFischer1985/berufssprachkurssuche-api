@@ -43,9 +43,10 @@ paths:
             type: string
             enum:
                 - 'MC'
+                - 'MB'
                 - 'A8'
                 - 'MQ'
-          description: Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.
+          description: Kursart - MC=Berufssprachkurse; MB=Integrationskurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.
           example: "MC"
           required: false
 
