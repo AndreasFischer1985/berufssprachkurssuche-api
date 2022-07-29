@@ -51,7 +51,7 @@ Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs
 
 **Parameter:** *orte* (Optional)
 
-Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich.
+Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich.
 
 
 **Parameter:** *systematiken* (Optional)
