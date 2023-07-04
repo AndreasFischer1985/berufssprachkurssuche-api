@@ -11,7 +11,7 @@ info:
    **ClientSecret:** 6776b89e-5728-4643-8cd5-c93aefb5314b 
    
    **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
-  version: "1.0.0"
+  version: "1.0.1"
   contact:
     name:  "AndreasFischer1985"
     email: "andreasfischer1985@web.de"
@@ -98,20 +98,11 @@ paths:
                 - MC%2001%202
                 - MC%2001%203
                 - MC%2001%204
-                - MC%2001%205               
-          description: "Sprachzielniveau - MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2. Mehrere Komma-getrennte Angaben möglich."
-          example: "MC%2001%201"
-          required: false
-
-        - in: query
-          name: berufsfachsprachkurse
-          schema:
-            type: string
-            enum:
+                - MC%2001%205
                 - MC%2002
-                - MC%2003
-          example: MC%2003
-          description: "Berufsfachsprachkurse - MC%2002=Spezialberufskurs, MC%2003=Berufsanerkennung. Mehrere Komma-getrennte Angaben möglich."
+                - MC%2003                  
+          description: "Sprachzielniveau - MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2, MC%2002=Spezialberufskurs, MC%2003=Berufsanerkennung. Mehrere Komma-getrennte Angaben möglich."
+          example: "MC%2001%201"
           required: false
 
         - in: query
@@ -136,11 +127,13 @@ paths:
             enum:
               - 1
               - 2
-              - 6
               - 3
+              - 4
               - 5
+              - 6
               - 0
-          description: "Lernform - 1=Vollzeit, 2=Teilzeit, 6=Blockunterricht, 3=Wochenendveranstaltung, 5=E-Learning, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich."
+              
+          description: "Lernform - 1=Vollzeit, 2=Teilzeit, 3=Wochenendveranstaltung, 4=Fernunterricht, 5=E-Learning, 6=Blockunterricht, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich."
           example: 0
           required: false
 
