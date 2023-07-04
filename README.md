@@ -84,16 +84,10 @@ Sortierungskriterium (z.B. basc)
 - MC%2001%203
 - MC%2001%204
 - MC%2001%205
-
-Sprachzielniveau: MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2. Mehrere Komma-getrennte Angaben möglich.
-
-
-**Parameter:** *berufsfachsprachkurse*  (Optional)
 - MC%2002
 - MC%2003
 
-Berufsfachsprachkurse: MC%2002=Spezialberufskurs, MC%2003=Berufsanerkennung. Mehrere Komma-getrennte Angaben möglich. 
-Suchhinweis: Für spezielle Berufe oder Berufsbereiche kann ergänzend die Suchwort­suche genutzt werden. 
+Sprachzielniveau: MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2, MC%2002=Spezialberufskurs, MC%2003=Berufsanerkennung. Mehrere Komma-getrennte Angaben möglich.
 
 
 **Parameter:** *beginntermine*  (Optional)
@@ -111,12 +105,13 @@ Beginntermin: 0=regelmäßiger Start, 1=diesen Monat, 2=nächster Monat, 3=über
 **Parameter:** *unterrichtsformen*  (Optional)
 - 1
 - 2
-- 6
 - 3
+- 4
 - 5
+- 6
 - 0
 
-Lernform: 1=Vollzeit, 2=Teilzeit, 6=Blockunterricht, 3=Wochenendveranstaltung, 5=E-Learning, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich.
+Lernform: 1=Vollzeit, 2=Teilzeit, 3=Wochenendveranstaltung, 5=E-Learning, 6=Blockunterricht, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich.
 
 
 **Parameter:** *anbieter*  (Optional)
