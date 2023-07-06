@@ -83,9 +83,9 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with berufssprachkurssuche.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = berufssprachkurse_api.BerufssprachkurseApi(api_client)
-    systematiken = "MC" # str | Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse. (optional)
+    systematiken = "MC" # str | Kursart - MC=Berufssprachkurse; MB=Integrationskurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse. (optional)
     suchworte = "Deutschsprachf%25C3%25B6rderung" # str | Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich. (optional)
-    orte = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich. (optional)
+    orte = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich. (optional)
     page = 1 # int | Seite (beginnend mit 0 für die erste Seite). (optional)
     umkreis = "Bundesweit" # str | Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km. (optional)
     sprachniveau = "MC%2001%201" # str | Sprachzielniveau - MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2. Mehrere Komma-getrennte Angaben möglich. (optional)

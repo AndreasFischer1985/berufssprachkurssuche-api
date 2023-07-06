@@ -74,7 +74,7 @@ class BerufssprachkurseApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {
-                    ("systematiken",): {"MC": "MC", "A8": "A8", "MQ": "MQ"},
+                    ("systematiken",): {"MC": "MC", "MB": "MB", "A8": "A8", "MQ": "MQ"},
                     ("umkreis",): {
                         "BUNDESWEIT": "Bundesweit",
                         "25": "25",
@@ -165,9 +165,9 @@ class BerufssprachkurseApi(object):
 
 
         Keyword Args:
-            systematiken (str): Kursart - MC=Berufssprachkurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.. [optional]
+            systematiken (str): Kursart - MC=Berufssprachkurse; MB=Integrationskurse; A8 = Bildungsangebote Migration; MQ = Anerkennung ausländischer Berufsabschlüsse.. [optional]
             suchworte (str): Suchworte (z.B. Deutschsprachf%25C3%25B6rderung,Berufsbezogener%2520Englischkurs). Mehrere Komma-getrennte Angaben möglich.. [optional]
-            orte (str): Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich.. [optional]
+            orte (str): Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Feucht_90537_11.224918_49.376701,N%C3%BCrnberg;%20Mittelfranken_11.0753_49.4508). Mehrere Komma-getrennte Angaben möglich.. [optional]
             page (int): Seite (beginnend mit 0 für die erste Seite).. [optional]
             umkreis (str): Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.. [optional]
             sprachniveau (str): Sprachzielniveau - MC%2001%201=A2, MC%2001%202=B1, MC%2001%203=B2, MC%2001%204=C1, MC%2001%205=C2. Mehrere Komma-getrennte Angaben möglich.. [optional]
