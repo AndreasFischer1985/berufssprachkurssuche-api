@@ -111,7 +111,7 @@ Beginntermin: 0=regelmäßiger Start, 1=diesen Monat, 2=nächster Monat, 3=über
 - 6
 - 0
 
-Lernform: 1=Vollzeit, 2=Teilzeit, 3=Wochenendveranstaltung, 5=E-Learning, 6=Blockunterricht, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich.
+Lernform: 1=Vollzeit, 2=Teilzeit, 3=Wochenendveranstaltung, 4=Fernunterricht, 5=E-Learning, 6=Blockunterricht, 0=Auf Anfrage. Mehrere Komma-getrennte Angaben möglich.
 
 
 **Parameter:** *anbieter*  (Optional)
